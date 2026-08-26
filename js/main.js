@@ -1,0 +1,1 @@
+console.log("VANTA-CINEMA conectado correctamente");
