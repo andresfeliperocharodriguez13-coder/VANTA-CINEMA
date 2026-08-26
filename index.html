@@ -1,95 +1,109 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VANTA-CINEMA</title>
-    <link rel="stylesheet" href="css/style.css">
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VANTA-CINEMA</title>
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <header>
-        <nav>
-            <h1>VANTA-CINEMA</h1>
-            <ul>
-                <li><a href="#cartelera">Cartelera</a></li>
-                <li><a href="#funciones">Funciones</a></li>
-                <li><a href="#sillas">Sillas</a></li>
-                <li><a href="#reservas">Reservas</a></li>
-            </ul>
-        </nav>
 
-        <section>
-            <h2>Cine de autor, funciones y reservas</h2>
-            <p>Consulta películas, revisa horarios, selecciona tus sillas y realiza reservas o compras simuladas con VANTA-CINEMA.</p>
-            <a href="#cartelera">Ver Cartelera</a>
-        </section>
-    </header>
+  <header>
+    <nav>
+      <button id="btnAbrirMenu" class="menu-btn" type="button">☰ MENU</button>
+      <h1>VANTA</h1>
+      <button class="search-btn" type="button">⌕</button>
+    </nav>
 
-    <main>
-        <section id="cartelera">
-            <h2>Cartelera</h2>
-            <div>
-                <input id="buscarPelicula" type="text" placeholder="Buscar película por nombre">
-                <select id="flitroGenero">
-                    <option value="">Todos los géneros</option>
-                </select>
-                <button id="btnBuscar">Buscar</button>
-            </div>
+    <section>
+      <h2>Cine de autor, funciones y reservas</h2>
+      <p>
+        Consulta películas desde TMDB, revisa horarios, selecciona tus sillas y realiza reservas o compras simuladas con VANTA-CINEMA.</p>
+      <a href="#cartelera">Ver cartelera</a>
+    </section>
+  </header>
 
-              <!-- Aquí JavaScript va a insertar las películas que lleguen desde TMDB -->
-            <div id="contenedorPeliculas"></div>
-        </section>
+  <section id="menuLateral" class="menu-lateral">
+    <button id="btnCerrarMenu" class="cerrar-menu" type="button">× CLOSE</button>
 
-        <section id="detalle">
-            <h2>Detalle de Pelicula</h2>
-            <div id="detallePelicula">
-                <p>Selecciona una pelicula para ver su información.</p>
-            </div>  
-        </section>
+    <ul>
+      <li><a href="#cartelera">Cartelera</a></li>
+      <li><a href="#detalle">Películas</a></li>
+      <li><a href="#funciones">Funciones</a></li>
+      <li><a href="#sillas">Sillas</a></li>
+      <li><a href="#reservas">Reservas</a></li>
+    </ul>
+  </section>
 
-        <section id="funciones">
-            <h2>Funciones Disponibles</h2>
-            <div id="contenedorFunciones">
-                <p>Selecciona una película para ver sus funciones.</p>
-            </div>
-        </section>
+  <main>
 
-        <section id="sillas">
-            <h2>Mapa de Sillas</h2>
-            <p>PANTALLA</p>
-            <div id="mapaSillas"></div>
-            <p id="sillasSeleccionadas">Sillas seleccionadas: ninguna</p>
-        </section>
+    <section id="cartelera">
+      <h2>Cartelera</h2>
 
-        <section id="reservas">
-            <h2>Reserva o Compra</h2>
+      <div>
+        <input id="buscarPelicula" type="text" placeholder="Buscar película por nombre">
 
-            <form id="formularioReserva">
-                <label for="nombreUsuario">Nombre:</label>
-                <input id="nombreUsuario" type="text" placeholder="Tu nombre">
+        <select id="filtroGenero">
+          <option value="">Todos los géneros</option>
+        </select>
 
-                <label for="correoUsuario">Correo:</label>
-                <input id="correoUsuario" type="email" placeholder="correo@ejemplo.com">
+        <button id="btnBuscar" type="button">Buscar</button>
+      </div>
 
-                <label for="cantidadTickets">Cantidad de tickets:</label>
-                <input id="cantidadTickets" type="number" min="1" value="1">
+      <div id="contenedorPeliculas"></div>
+    </section>
 
-                <div id="resumenOperacion">
-                    <p>Selecciona película, función y sillas para ver el resumen.</p>
-                </div>
+    <section id="detalle">
+      <h2>Detalle de película</h2>
 
-                <button id="btnReservar" type="button">Confirmar reserva</button>
-                <button id="btnComprar" type="button">Confirmar compra</button>
-            </form>
+      <div id="detallePelicula">
+        <p>Selecciona una película para ver su información.</p>
+      </div>
+    </section>
 
-        </section>
-    </main>
+    <section id="funciones">
+      <h2>Funciones disponibles</h2>
 
-     <footer>
-        <p>VANTA-CINEMA | Sistema web de cartelera con TMDB y JSON Server</p>
-    </footer>
-    <script src="./js/main.js"></script>
-    
+      <div id="contenedorFunciones">
+        <p>Selecciona una película para ver sus funciones.</p>
+      </div>
+    </section>
+
+    <section id="sillas">
+      <h2>Mapa de sillas</h2>
+      <p>PANTALLA</p>
+      <div id="mapaSillas"></div>
+      <p id="sillasSeleccionadas">Sillas seleccionadas: ninguna</p>
+    </section>
+
+    <section id="reservas">
+      <h2>Reserva o compra</h2>
+
+      <form id="formularioReserva">
+        <label for="nombreUsuario">Nombre:</label>
+        <input id="nombreUsuario" type="text" placeholder="Tu nombre">
+
+        <label for="correoUsuario">Correo:</label>
+        <input id="correoUsuario" type="email" placeholder="correo@ejemplo.com">
+
+        <label for="cantidadTickets">Cantidad de tickets:</label>
+        <input id="cantidadTickets" type="number" min="1" value="1">
+
+        <div id="resumenOperacion">
+          <p>Selecciona película, función y sillas para ver el resumen.</p>
+        </div>
+
+        <button id="btnReservar" type="button">Confirmar reserva</button>
+        <button id="btnComprar" type="button">Confirmar compra</button>
+      </form>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>VANTA-CINEMA | Sistema web de cartelera con TMDB y JSON Server</p>
+  </footer>
+
+  <script src="./js/main.js"></script>
 </body>
 </html>

@@ -1,5 +1,321 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
 body {
-  background-color: #080808;
-  color: #f4f0e8;
+  background-color: #f4f1ea;
+  color: #050505;
   font-family: Arial, Helvetica, sans-serif;
+}
+
+/* HEADER */
+header {
+  min-height: 100vh;
+  padding: 45px;
+  color: white;
+  background:
+    linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.45)),
+    url("https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=1600&q=80");
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  transition: background-image 1s ease-in-out;
+}
+
+/* NAV */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.menu-btn,
+.search-btn {
+  background: none;
+  border: none;
+  color: white;
+  font-weight: bold;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.search-btn {
+  font-size: 34px;
+  font-weight: normal;
+}
+
+nav h1 {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 42px;
+  font-weight: bold;
+  letter-spacing: -3px;
+}
+
+/* HERO */
+header section {
+  position: absolute;
+  left: 45px;
+  bottom: 60px;
+  max-width: 720px;
+}
+
+header section h2 {
+  font-size: 76px;
+  line-height: 0.9;
+  letter-spacing: -3px;
+  margin-bottom: 20px;
+}
+
+header section p {
+  max-width: 520px;
+  font-size: 18px;
+  line-height: 1.5;
+  margin-bottom: 25px;
+}
+
+header section a {
+  display: inline-block;
+  color: white;
+  border: 1px solid white;
+  padding: 13px 22px;
+  text-decoration: none;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+/* MENU LATERAL */
+.menu-lateral {
+  position: fixed;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100vh;
+  background-color: #000;
+  z-index: 100;
+  padding: 55px 48px;
+  transition: left 0.5s ease;
+}
+
+.menu-lateral.activo {
+  left: 0;
+}
+
+.cerrar-menu {
+  background: none;
+  color: white;
+  border: none;
+  font-weight: bold;
+  margin-bottom: 60px;
+  cursor: pointer;
+}
+
+.menu-lateral ul {
+  list-style: none;
+}
+
+.menu-lateral li {
+  margin-bottom: 18px;
+}
+
+.menu-lateral a {
+  color: white;
+  text-decoration: none;
+  font-size: 42px;
+  font-weight: bold;
+  letter-spacing: -2px;
+}
+
+.menu-lateral a:hover {
+  color: #bfbfbf;
+}
+
+/* CONTENIDO GENERAL */
+main {
+  padding: 70px 45px;
+}
+
+section {
+  margin-bottom: 90px;
+}
+
+section h2 {
+  font-size: 54px;
+  letter-spacing: -2px;
+  margin-bottom: 30px;
+}
+
+/* BUSCADOR */
+#cartelera > div:first-of-type {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 45px;
+}
+
+input,
+select,
+button {
+  padding: 14px;
+  font-size: 15px;
+  border: 1px solid #111;
+  background-color: transparent;
+}
+
+input,
+select {
+  color: #050505;
+}
+
+button {
+  cursor: pointer;
+  background-color: #050505;
+  color: white;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+/* TARJETAS DE PELICULAS */
+#contenedorPeliculas {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 34px;
+}
+
+#contenedorPeliculas article {
+  cursor: pointer;
+}
+
+#contenedorPeliculas img {
+  width: 100%;
+  height: 390px;
+  object-fit: cover;
+  display: block;
+  filter: grayscale(10%);
+  transition: transform 0.4s ease, filter 0.4s ease;
+}
+
+#contenedorPeliculas article:hover img {
+  transform: scale(1.03);
+  filter: grayscale(0%);
+}
+
+#contenedorPeliculas h3 {
+  font-size: 28px;
+  letter-spacing: -1px;
+  margin-top: 18px;
+}
+
+#contenedorPeliculas p {
+  margin-top: 8px;
+  color: #777;
+  text-transform: uppercase;
+  font-size: 13px;
+}
+
+#contenedorPeliculas button {
+  margin-top: 15px;
+}
+
+/* SECCIONES INTERNAS */
+#detalle,
+#funciones,
+#sillas,
+#reservas {
+  border-top: 1px solid #111;
+  padding-top: 45px;
+}
+
+/* SILLAS */
+#mapaSillas {
+  margin: 30px 0;
+}
+
+#mapaSillas button {
+  margin: 6px;
+  min-width: 50px;
+  border: none;
+  background-color: #2f8f5b;
+  color: white;
+}
+
+/* FORMULARIO */
+form {
+  display: grid;
+  gap: 18px;
+  max-width: 520px;
+}
+
+form label {
+  font-weight: bold;
+}
+
+form input {
+  width: 100%;
+}
+
+/* FOOTER */
+footer {
+  padding: 35px;
+  background-color: #050505;
+  color: white;
+  text-align: center;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  header {
+    padding: 28px;
+  }
+
+  nav {
+    align-items: flex-start;
+  }
+
+  nav h1 {
+    position: static;
+    transform: none;
+    font-size: 32px;
+  }
+
+  header section {
+    left: 28px;
+    right: 28px;
+    bottom: 45px;
+  }
+
+  header section h2 {
+    font-size: 48px;
+  }
+
+  main {
+    padding: 45px 24px;
+  }
+
+  #cartelera > div:first-of-type {
+    flex-direction: column;
+  }
+
+  #contenedorPeliculas {
+    grid-template-columns: 1fr;
+  }
+
+  #contenedorPeliculas img {
+    height: 430px;
+  }
+
+  .menu-lateral {
+    width: 100%;
+  }
+
+  .menu-lateral a {
+    font-size: 36px;
+  }
 }
