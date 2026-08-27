@@ -1,347 +1,146 @@
-/* ========================================
-   DETALLE DE PELÍCULA
-======================================== */
+/* css/detalle.css - Ficha Cinematográfica Estilo A24 */
 
-.detalle-pelicula {
-
-    width: 84%;
-
-    margin: 80px auto;
-
-    display: grid;
-
-    grid-template-columns: 320px 1fr;
-
-    gap: 60px;
-
-    align-items: start;
-
+.detalle-seccion {
+  padding: 60px 50px;
+  max-width: 1300px;
+  margin: 0 auto;
 }
 
-
-/* ========================================
-   POSTER
-======================================== */
-
-.detalle-poster img {
-
-    width: 100%;
-
-    border-radius: 15px;
-
-    display: block;
-
+/* --- Contenedor Principal (Póster + Ficha) --- */
+.detalle-contenido {
+  display: grid;
+  grid-template-columns: 340px 1fr;
+  gap: 50px;
+  background: transparent;
+  border: 1px solid var(--border-line);
+  padding: 40px;
+  margin-bottom: 60px;
 }
 
-
-/* ========================================
-   INFORMACIÓN
-======================================== */
-
-.detalle-info h1 {
-
-    font-size: 48px;
-
-    margin: 15px 0 25px;
-
+.detalle-contenido img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border: 1px solid var(--border-line);
+  filter: grayscale(15%);
+  transition: filter 0.3s ease;
 }
 
-
-.detalle-datos {
-
-    display: flex;
-
-    flex-wrap: wrap;
-
-    gap: 20px;
-
-    margin-bottom: 25px;
-
+.detalle-contenido:hover img {
+  filter: grayscale(0%);
 }
 
-
-.detalle-datos span {
-
-    font-size: 15px;
-
+.detalle-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
-
-/* ========================================
-   GÉNEROS
-======================================== */
-
-.detalle-generos {
-
-    margin-bottom: 30px;
-
+.detalle-info h2 {
+  font-family: var(--font-title);
+  font-size: 3.5rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  line-height: 0.95;
+  margin-bottom: 25px;
+  border-bottom: 1px solid var(--border-line);
+  padding-bottom: 20px;
 }
 
-
-.detalle-generos h3 {
-
-    margin-bottom: 12px;
-
+.detalle-info p {
+  font-size: 1rem;
+  color: #cccccc;
+  line-height: 1.7;
+  margin-bottom: 30px;
+  font-weight: 300;
 }
 
-
-.generos-lista {
-
-    display: flex;
-
-    flex-wrap: wrap;
-
-    gap: 10px;
-
+/* Grilla de Datos Técnicos */
+.detalle-info ul {
+  list-style: none;
+  margin-bottom: 35px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 20px;
+  border-top: 1px solid var(--border-line);
+  border-bottom: 1px solid var(--border-line);
+  padding: 20px 0;
 }
 
-
-.genero {
-
-    padding: 8px 14px;
-
-    border: 1px solid #ccc;
-
-    border-radius: 20px;
-
-    font-size: 14px;
-
+.detalle-info ul li {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
-
-/* ========================================
-   SINOPSIS
-======================================== */
-
-.detalle-sinopsis {
-
-    margin-bottom: 30px;
-
+.detalle-info ul li strong {
+  color: var(--text-white);
+  display: block;
+  font-size: 0.9rem;
+  margin-bottom: 4px;
+  font-weight: 600;
 }
 
-
-.detalle-sinopsis h2 {
-
-    margin-bottom: 12px;
-
+/* Botón de Inversión A24 */
+.btn-funciones {
+  display: inline-block;
+  align-self: flex-start;
+  background: transparent;
+  color: var(--text-white);
+  border: 1px solid var(--text-white);
+  padding: 14px 32px;
+  text-decoration: none;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  transition: all 0.2s ease-in-out;
 }
 
-
-.detalle-sinopsis p {
-
-    line-height: 1.7;
-
-    font-size: 17px;
-
+.btn-funciones:hover {
+  background: var(--text-white);
+  color: var(--bg-black);
 }
 
-
-/* ========================================
-   DIRECTOR Y REPARTO
-======================================== */
-
-.detalle-personal {
-
-    display: grid;
-
-    grid-template-columns: 1fr 1fr;
-
-    gap: 30px;
-
-    margin-bottom: 35px;
-
-}
-
-
-.detalle-personal h3 {
-
-    margin-bottom: 8px;
-
-}
-
-
-.detalle-personal p {
-
-    line-height: 1.6;
-
-}
-
-
-/* ========================================
-   BOTONES
-======================================== */
-
-.detalle-acciones {
-
-    display: flex;
-
-    flex-wrap: wrap;
-
-    gap: 15px;
-
-}
-
-
-.btn-primary,
-.btn-secondary {
-
-    padding: 14px 22px;
-
-    border: none;
-
-    cursor: pointer;
-
-    font-weight: bold;
-
-    font-size: 15px;
-
-}
-
-
-.btn-primary {
-
-    background: black;
-
-    color: white;
-
-}
-
-
-.btn-secondary {
-
-    background: #ddd;
-
-    color: black;
-
-}
-
-
-/* ========================================
-   TRAILER
-======================================== */
-
-.trailer-section {
-
-    width: 84%;
-
-    margin: 80px auto;
-
-}
-
-
-.trailer-header {
-
-    margin-bottom: 25px;
-
-}
-
-
+/* --- Reproductor de Tráiler Editorial --- */
 .trailer-container {
-
-    width: 100%;
-
-    aspect-ratio: 16 / 9;
-
+  background: transparent;
+  border: 1px solid var(--border-line);
+  padding: 40px;
 }
 
+.trailer-container h3 {
+  font-family: var(--font-title);
+  font-size: 1.8rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 25px;
+  border-bottom: 1px solid var(--border-line);
+  padding-bottom: 15px;
+}
 
 .trailer-container iframe {
-
-    width: 100%;
-
-    height: 100%;
-
-    border: none;
-
-    border-radius: 15px;
-
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: 1px solid var(--border-line);
 }
 
+/* Adaptación Mobile */
+@media (max-width: 900px) {
+  .detalle-contenido {
+    grid-template-columns: 1fr;
+    gap: 30px;
+    padding: 25px;
+  }
 
-/* ========================================
-   LOADING
-======================================== */
+  .detalle-contenido img {
+    max-width: 280px;
+    margin: 0 auto;
+  }
 
-.loading-detalle {
-
-    min-height: 60vh;
-
-    display: flex;
-
-    justify-content: center;
-
-    align-items: center;
-
-    font-size: 18px;
-
-}
-
-
-/* ========================================
-   ERROR
-======================================== */
-
-.error-detalle {
-
-    min-height: 60vh;
-
-    display: flex;
-
-    flex-direction: column;
-
-    justify-content: center;
-
-    align-items: center;
-
-    gap: 20px;
-
-    text-align: center;
-
-}
-
-
-.hidden {
-
-    display: none;
-
-}
-
-
-/* ========================================
-   RESPONSIVE
-======================================== */
-
-@media (max-width: 800px) {
-
-    .detalle-pelicula {
-
-        grid-template-columns: 1fr;
-
-        gap: 30px;
-
-    }
-
-
-    .detalle-poster {
-
-        max-width: 320px;
-
-        margin: auto;
-
-    }
-
-
-    .detalle-info h1 {
-
-        font-size: 36px;
-
-    }
-
-
-    .detalle-personal {
-
-        grid-template-columns: 1fr;
-
-    }
-
+  .detalle-info h2 {
+    font-size: 2.5rem;
+  }
 }
