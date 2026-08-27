@@ -1,79 +1,86 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Detalle | VANTA-CINEMA</title>
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/detalle.css">
-    <link rel="stylesheet" href="../css/responsive.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VANTA CINEMA - Detalle de Película</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/detalle.css">
 </head>
 <body>
-    <header>
-        <nav>
-            <div class="logo">
-                <a href="../index.html">VANTA</a></div>
-            <button id="btnAbrirMenu"type="button">☰</button>
-            <ul>
-                <li><a href="../index.html">Inicio</a></li>
-                <li><a href="../index.html#cartelera">Cartelera</a></li>
-
-                <li>
-                    <a href="funciones.html">
-                        Funciones
-                    </a>
-                </li>
-
-                <li>
-                    <a href="perfil.html">
-                        Mi perfil
-                    </a>
-                </li>
-
-            </ul>
-
-        </nav>
-
-    </header>
 
 
-    <!-- CONTENIDO -->
-
-    <main>
-
-        <section
-            id="detallePelicula"
-            class="detalle-pelicula"
-        >
-
-            <p>
-                Cargando información...
-            </p>
-
-        </section>
+  <header class="header-detalle">
+    <a href="../index.html" class="btn-volver">← VOLVER A CARTELERA</a>
+    <div class="logo">VANTA <span>CINEMA</span></div>
+  </header>
 
 
-        <section
-            id="trailer"
-            class="trailer"
-        >
-
-        </section>
-
-    </main>
+  <main class="contenedor-detalle">
+>
+    <div id="loading" class="loading">Cargando película...</div>
 
 
-    <footer>
+    <div id="detallePelicula" class="detalle-content hidden">
+      
 
-        <p>
-            © 2026 VANTA-CINEMA
-        </p>
+      <div id="backdropBg" class="backdrop-bg"></div>
+      <div class="backdrop-overlay"></div>
 
-    </footer>
-    <script src="../js/config.js"></script>
-    <script src="../js/main.js"></script>
-    <script src="../js/detalle.js"></script>
+      <section class="hero-detalle">
 
+        <div class="poster-container">
+          <img id="poster" src="" alt="Póster de la película">
+        </div>
+
+        <div class="info-container">
+          <div id="generos" class="generos-tags"></div>
+          <h1 id="titulo"></h1>
+          <p id="tagline" class="tagline"></p>
+
+          <div class="meta-bar">
+            <span class="meta-item">⏱️ <strong id="duracion">--</strong> min</span>
+            <span class="meta-item">⭐ <strong id="promedio">--</strong> / 10</span>
+            <span class="meta-item">📅 <strong id="fecha">--</strong></span>
+          </div>
+
+          <div class="director-box">
+            <span class="label">DIRECTOR</span>
+            <strong id="directorNombre">Cargando...</strong>
+          </div>
+
+          <div class="sinopsis-box">
+            <h3>SINOPSIS</h3>
+            <p id="sinopsis" class="sinopsis-texto"></p>
+          </div>
+
+          <div class="acciones-bar">
+            <a id="btnVerFunciones" href="#" class="btn-principal">SELECCIONAR FUNCIÓN Y BOLETOS</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Sección Reparto / Actores (15 Actores) -->
+      <section class="reparto-section">
+        <h2 class="seccion-titulo">REPARTO PRINCIPAL</h2>
+        <div id="contenedorReparto" class="reparto-grid">
+        </div>
+      </section>
+
+      <section class="trailer-section">
+        <h2 class="seccion-titulo">TRÁILER OFICIAL</h2>
+        <div id="contenedorTrailer" class="video-responsive">
+          <p class="sin-trailer">Buscando tráiler...</p>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <script src="../js/config.js"></script>
+  <script src="../js/detalle.js"></script>
 </body>
-
 </html>
