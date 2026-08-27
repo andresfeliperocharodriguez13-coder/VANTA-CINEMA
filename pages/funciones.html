@@ -1,136 +1,73 @@
 <!DOCTYPE html>
 <html lang="es">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Funciones | VANTA-CINEMA</title>
-        <link rel="stylesheet" href="../css/style.css">
-        <link rel="stylesheet" href="../css/funciones.css">
-        <link rel="stylesheet" href="../css/responsive.css">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VANTA CINEMA - Selección de Función</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/funciones.css">
 </head>
 <body>
-    <header class="header">
-        <nav class="navbar">
-            <div class="logo">
-                <a href="../index.html">VANTA</a>
-            </div>
-            <button id="btnAbrirMenu" class="menu-btn" type="button">☰</button>
-            <ul class="nav-links">
-                <li>
-                    <a href="../index.html">Inicio</a>
-                </li>
-                <li>
-                    <a href="../index.html#cartelera">Cartelera</a>
-                </li>
-                <li>
-                    <a href="funciones.html" class="active">Funciones</a>
-                </li>
-                <li>
-                    <a href="perfil.html">Mi perfil</a>
-                </li>
-            </ul>
-            <button id="btnBuscar" class="search-btn" type="button">🔍</button>
-        </nav>
-    </header>
 
-    <aside id="menuLateral" class="menu-lateral">
-        <button id="btnCerrarMenu" class="cerrar-menu" type="button">✕</button>
-        <div class="menu-logo">
-            <h2>VANTA</h2>
-            <p>CINEMA</p>
+  <!-- Encabezado -->
+  <header class="header-funciones">
+    <a id="btnVolverDetalle" href="#" class="btn-volver">← VOLVER A DETALLE</a>
+    <div class="logo">VANTA <span>CINEMA</span></div>
+  </header>
+
+  <!-- Contenido Principal -->
+  <main class="contenedor-funciones">
+    <div id="loading" class="loading">Cargando funciones disponibles...</div>
+
+    <div id="contenidoFunciones" class="funciones-layout hidden">
+      
+      <!-- Ficha Resumen de la Película -->
+      <section class="resumen-pelicula-card">
+        <img id="posterPeli" src="" alt="Póster de la película">
+        <div class="info-resumen">
+          <span id="generosPeli" class="generos-badge">--</span>
+          <h1 id="tituloPeli">--</h1>
+          <div class="meta-peli">
+            <span>⏱️ <strong id="duracionPeli">--</strong> min</span>
+            <span>⭐ <strong id="promedioPeli">--</strong> / 10</span>
+          </div>
         </div>
-        <ul>
-            <li>
-                <a href="../index.html">Inicio</a>
-            </li>
-            <li>
-                <a href="../index.html#cartelera">Cartelera</a>
-            </li>
-            <li>
-                <a href="funciones.html">Funciones</a>
-            </li>
-            <li>
-                <a href="reserva.html">Reservas</a>
-            </li>
-            <li>
-                <a href="compra.html">Compras</a>
-            </li>
-            <li>
-                <a href="perfil.html">Mi perfil</a>
-            </li>
-        </ul>
-    </aside>
+      </section>
 
-    <main>
-        <section class="page-header">
-            <span class="section-label">VANTA-CINEMA</span>
-            <h1>Funciones</h1>
-            <p>Consulta las funciones disponibles y elige el horario que mejor se adapte a ti.</p>
-        </section>
-
-        <section class="funciones-filtros">
-            <div class="filtro">
-                <label for="selectPelicula">Película</label>
-                <select id="selectPelicula">
-                    <option value="">Selecciona una película</option>
-                </select>
-            </div>
-            <div class="filtro">
-                <label for="selectFecha">Fecha</label>
-                <input type="date"id="selectFecha">
-            </div>
-            <button id="btnBuscarFunciones"class="btn-primary"type="button">
-                Buscar funciones
-            </button>
-        </section>
-
-        <section class="funciones-section">
-            <div class="section-header">
-                <div>
-                    <span class="section-label">HORARIOS DISPONIBLES</span>
-                    <h2>Funciones</h2>
-                </div>
-            </div>
-
-            <div id="contenedorFunciones"class="funciones-grid"></div>
-            <div id="sinFunciones"class="sin-resultados hidden">
-                <h3>No hay funciones disponibles.</h3>
-                <p>Intenta seleccionar otra película o fecha.</p>
-            </div>
-        </section>
-    </main>
-
-    <footer class="footer">
-        <div class="footer-container">
-            <div class="footer-brand">
-                <h2>VANTA</h2>
-                <p>Cine, historias y experiencias.</p>
-            </div>
-
-            <div class="footer-links">
-                <div>
-                    <h3>Navegación</h3>
-                    <a href="../index.html">Inicio</a>
-                    <a href="../index.html#cartelera">Cartelera</a>
-                    <a href="funciones.html">Funciones</a>
-                </div>
-
-                <div>
-                    <h3>Usuario</h3>
-                    <a href="reserva.html">Reservas</a>
-                    <a href="compra.html">Compras</a>
-                    <a href="perfil.html">Mi perfil</a>
-                </div>
-            </div>
+      <!-- Selector de Fechas -->
+      <section class="seccion-fechas">
+        <h2 class="seccion-titulo">1. SELECCIONA EL DÍA</h2>
+        <div id="contenedorFechas" class="fechas-grid">
+          <!-- Fechas generadas dinámicamente -->
         </div>
+      </section>
 
-        <div class="footer-bottom">
-            <p>© 2026 VANTA-CINEMA</p>
-            <p>Proyecto académico</p>
+      <!-- Selector de Salas y Horarios -->
+      <section class="seccion-horarios">
+        <h2 class="seccion-titulo">2. SELECCIONA EL FORMATO Y HORARIO</h2>
+        <div id="contenedorHorarios" class="formatos-lista">
+          <!-- Bloques de formatos (2D, 3D, VIP) generados dinámicamente -->
         </div>
-    </footer>
-    <script src="../js/config.js"></script>
-    <script src="../js/main.js"></script>
-    <script src="../js/funciones.js"></script>
+      </section>
+
+      <!-- Barra de Resumen de Selección y Continuar -->
+      <div class="barra-confirmacion">
+        <div class="info-seleccion">
+          <span class="label">FUNCIÓN SELECCIONADA:</span>
+          <p id="resumenSeleccion" class="resumen-texto">Ningún horario seleccionado</p>
+        </div>
+        <button id="btnContinuarAsientos" class="btn-continuar" disabled>
+          SELECCIONAR ASIENTOS →
+        </button>
+      </div>
+
+    </div>
+  </main>
+
+  <script src="../js/config.js"></script>
+  <script src="../js/funciones.js"></script>
 </body>
 </html>
