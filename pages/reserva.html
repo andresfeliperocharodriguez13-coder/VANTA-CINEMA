@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reservar | VANTA-CINEMA</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/sillas.css">
+    <link rel="stylesheet" href="../css/reserva.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <div class="logo">
+                <a href="../index.html">VANTA</a>
+            </div>
+            <button id="btnAbrirMenu"class="menu-btn"type="button">☰</button>
+            <ul class="nav-links">
+                <li><a href="../index.html">Inicio</a></li>
+                <li><a href="../index.html#cartelera">Cartelera</a></li>
+                <li><a href="funciones.html">Funciones</a></li>
+                <li><a href="perfil.html">Mi perfil</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <aside id="menuLateral" class="menu-lateral">
+            <button id="btnCerrarMenu"class="cerrar-menu"type="button">✕</button>
+            <div class="menu-logo">
+                <h2>VANTA</h2>
+                <p>CINEMA</p>
+            </div>
+            <ul>
+                <li><a href="../index.html">Inicio</a></li>
+                <li><a href="../index.html#cartelera">Cartelera</a></li>
+                <li><a href="funciones.html">Funciones</a></li>
+                <li><a href="reserva.html">Reservas</a></li>
+                <li><a href="compra.html">Compras</a></li>
+                <li><a href="perfil.html">Mi perfil</a></li>
+            </ul>
+        </aside>
+
+        <main>
+            <section class="page-header">
+                <span class="section-label">VANTA-CINEMA</span>
+                <h1>Reserva tu lugar</h1>
+                <p>Selecciona tus sillas y prepárate para disfrutar la película.</p>
+            </section>
+
+            <section class="reserva-info">
+                <div>
+                    <span>PELÍCULA</span>
+                    <h2 id="nombrePelicula">Selecciona una función</h2>
+                </div>
+
+                <div>
+                    <span>FECHA</span>
+                    <p id="fechaFuncion">--</p>
+                </div>
+
+                <div>
+                    <span>HORA</span>
+                    <p id="horaFuncion">--</p>
+                </div>
+
+                <div>
+                    <span>SALA</span>
+                    <p id="salaFuncion">--</p>
+                </div>
+            </section>
+
+            <section class="sillas-section">
+                <div class="pantalla">PANTALLA</div>
+
+                <div id="contenedorSillas"class="sillas-grid"></div>
+                <div class="leyenda-sillas">
+                    <div><span class="silla-demo disponible"></span>Disponible</div>
+                    <div><span class="silla-demo seleccionada"></span>Seleccionada</div>
+                    <div><span class="silla-demo ocupada"></span>Ocupada</div>
+                </div>
+            </section>
+
+            <section class="reserva-resumen">
+                <div>
+                    <h2>Resumen de reserva</h2>
+                    <p>Sillas seleccionadas:<strong id="cantidadSillas">0</strong></p>
+                    <p>Total:<strong id="totalReserva">$0</strong></p>
+                </div>
+
+                <button id="btnConfirmarReserva"class="btn-primary"type="button">Confirmar reserva</button>
+            </section>
+        </main>
+        <footer class="footer">
+            <div class="footer-container">
+                <div class="footer-brand">
+                    <h2>VANTA</h2>
+                    <p>Cine, historias y experiencias.</p>
+                </div>
+                <div class="footer-links">
+                    <div>
+                        <h3>Navegación</h3>
+                        <a href="../index.html">Inicio</a>
+                        <a href="../index.html#cartelera">Cartelera</a>
+                        <a href="funciones.html">Funciones</a>
+                    </div>
+                    <div>
+                        <h3>Usuario</h3>
+                        <a href="reserva.html">Reservas</a>
+                        <a href="compra.html">Compras</a>
+                        <a href="perfil.html">Mi perfil</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>© 2026 VANTA-CINEMA</p>
+                <p>Proyecto académico</p>
+            </div>
+        </footer>
+        <script src="../js/config.js"></script>
+        <script src="../js/main.js"></script>
+        <script src="../js/sillas.js"></script>
+        <script src="../js/reservas.js"></script>
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"content="width=device-width, initial-scale=1.0">
+    <title>Compras | VANTA-CINEMA</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/reserva.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <div class="logo"><a href="../index.html">VANTA</a></div>
+            <button id="btnAbrirMenu"class="menu-btn"type="button">☰</button>
+            <ul class="nav-links">
+                <li><a href="../index.html">Inicio</a></li>
+                <li><a href="../index.html#cartelera">Cartelera</a></li>
+                <li><a href="funciones.html">Funciones</a></li>
+                <li><a href="perfil.html">Mi perfil</a></li>
+            </ul>
+        </nav>
+    </header>
+    <aside id="menuLateral"class="menu-lateral">
+        <button id="btnCerrarMenu"class="cerrar-menu"type="button">✕</button>
+        <div class="menu-logo">
+            <h2>VANTA</h2>
+            <p>CINEMA</p>
+        </div>
+        <ul>
+            <li><a href="../index.html">Inicio</a></li>
+            <li><a href="../index.html#cartelera">Cartelera</a></li>
+            <li><a href="funciones.html">Funciones</a></li>
+            <li><a href="reserva.html">Reservas</a></li>
+            <li><a href="compra.html">Compras</a></li>
+            <li><a href="perfil.html">Mi perfil</a></li>
+        </ul>
+    </aside>
+
+    <main>
+        <section class="page-header">
+            <span class="section-label">VANTA-CINEMA</span>
+            <h1>Mis compras</h1>
+            <p>Consulta tus entradas y compras realizadas.</p>
+        </section>
+        <section class="compras-section">
+            <div class="section-header">
+                <div>
+                    <span class="section-label">HISTORIAL</span>
+                    <h2>Mis entradas</h2>
+                </div>
+            </div>
+
+            <div id="contenedorCompras"class="compras-grid"></div>
+            <div id="sinCompras"class="sin-resultados">
+                <h3>Todavía no tienes compras.</h3>
+                <p>Cuando compres entradas aparecerán aquí.</p>
+                <a href="funciones.html"class="btn-primary">Ver funciones</a>
+            </div>
+        </section>
+
+        <section id="detalleCompra"class="detalle-compra hidden">
+            <div><span class="section-label">DETALLE</span>
+                <h2>Resumen de compra</h2>
+            </div>
+
+            <div class="compra-datos">
+                <p>Película:<strong id="compraPelicula">--</strong></p>
+                <p>Fecha:<strong id="compraFecha">--</strong></p>
+                <p>Hora:<strong id="compraHora">--</strong></p>
+                <p>Sala:<strong id="compraSala">--</strong></p>
+                <p>Sillas:<strong id="compraSillas">--</strong></p>
+                <p>Total:<strong id="compraTotal">$0</strong></p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <h2>VANTA</h2>
+                <p>Cine, historias y experiencias.</p>
+            </div>
+
+            <div class="footer-links">
+                <div>
+                    <h3>Navegación</h3>
+                    <a href="../index.html">Inicio</a>
+                    <a href="../index.html#cartelera">Cartelera</a>
+                    <a href="funciones.html">Funciones</a>
+                </div>
+
+                <div>
+                    <h3>Usuario</h3>
+                    <a href="reserva.html">Reservas</a>
+                    <a href="compra.html">Compras</a>
+                    <a href="perfil.html">Mi perfil</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2026 VANTA-CINEMA</p>
+            <p>Proyecto académico</p>
+        </div>
+    </footer>
+    <script src="../js/config.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/compras.js"></script>
+    
+</body>
+</html>
