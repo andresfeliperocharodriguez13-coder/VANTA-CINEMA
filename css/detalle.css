@@ -1,0 +1,347 @@
+/* ========================================
+   DETALLE DE PELÍCULA
+======================================== */
+
+.detalle-pelicula {
+
+    width: 84%;
+
+    margin: 80px auto;
+
+    display: grid;
+
+    grid-template-columns: 320px 1fr;
+
+    gap: 60px;
+
+    align-items: start;
+
+}
+
+
+/* ========================================
+   POSTER
+======================================== */
+
+.detalle-poster img {
+
+    width: 100%;
+
+    border-radius: 15px;
+
+    display: block;
+
+}
+
+
+/* ========================================
+   INFORMACIÓN
+======================================== */
+
+.detalle-info h1 {
+
+    font-size: 48px;
+
+    margin: 15px 0 25px;
+
+}
+
+
+.detalle-datos {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 20px;
+
+    margin-bottom: 25px;
+
+}
+
+
+.detalle-datos span {
+
+    font-size: 15px;
+
+}
+
+
+/* ========================================
+   GÉNEROS
+======================================== */
+
+.detalle-generos {
+
+    margin-bottom: 30px;
+
+}
+
+
+.detalle-generos h3 {
+
+    margin-bottom: 12px;
+
+}
+
+
+.generos-lista {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 10px;
+
+}
+
+
+.genero {
+
+    padding: 8px 14px;
+
+    border: 1px solid #ccc;
+
+    border-radius: 20px;
+
+    font-size: 14px;
+
+}
+
+
+/* ========================================
+   SINOPSIS
+======================================== */
+
+.detalle-sinopsis {
+
+    margin-bottom: 30px;
+
+}
+
+
+.detalle-sinopsis h2 {
+
+    margin-bottom: 12px;
+
+}
+
+
+.detalle-sinopsis p {
+
+    line-height: 1.7;
+
+    font-size: 17px;
+
+}
+
+
+/* ========================================
+   DIRECTOR Y REPARTO
+======================================== */
+
+.detalle-personal {
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 30px;
+
+    margin-bottom: 35px;
+
+}
+
+
+.detalle-personal h3 {
+
+    margin-bottom: 8px;
+
+}
+
+
+.detalle-personal p {
+
+    line-height: 1.6;
+
+}
+
+
+/* ========================================
+   BOTONES
+======================================== */
+
+.detalle-acciones {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 15px;
+
+}
+
+
+.btn-primary,
+.btn-secondary {
+
+    padding: 14px 22px;
+
+    border: none;
+
+    cursor: pointer;
+
+    font-weight: bold;
+
+    font-size: 15px;
+
+}
+
+
+.btn-primary {
+
+    background: black;
+
+    color: white;
+
+}
+
+
+.btn-secondary {
+
+    background: #ddd;
+
+    color: black;
+
+}
+
+
+/* ========================================
+   TRAILER
+======================================== */
+
+.trailer-section {
+
+    width: 84%;
+
+    margin: 80px auto;
+
+}
+
+
+.trailer-header {
+
+    margin-bottom: 25px;
+
+}
+
+
+.trailer-container {
+
+    width: 100%;
+
+    aspect-ratio: 16 / 9;
+
+}
+
+
+.trailer-container iframe {
+
+    width: 100%;
+
+    height: 100%;
+
+    border: none;
+
+    border-radius: 15px;
+
+}
+
+
+/* ========================================
+   LOADING
+======================================== */
+
+.loading-detalle {
+
+    min-height: 60vh;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    font-size: 18px;
+
+}
+
+
+/* ========================================
+   ERROR
+======================================== */
+
+.error-detalle {
+
+    min-height: 60vh;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 20px;
+
+    text-align: center;
+
+}
+
+
+.hidden {
+
+    display: none;
+
+}
+
+
+/* ========================================
+   RESPONSIVE
+======================================== */
+
+@media (max-width: 800px) {
+
+    .detalle-pelicula {
+
+        grid-template-columns: 1fr;
+
+        gap: 30px;
+
+    }
+
+
+    .detalle-poster {
+
+        max-width: 320px;
+
+        margin: auto;
+
+    }
+
+
+    .detalle-info h1 {
+
+        font-size: 36px;
+
+    }
+
+
+    .detalle-personal {
+
+        grid-template-columns: 1fr;
+
+    }
+
+}
