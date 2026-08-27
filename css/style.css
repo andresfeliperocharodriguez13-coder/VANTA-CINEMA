@@ -183,10 +183,11 @@ button {
 }
 
 /* TARJETAS DE PELICULAS */
+
 #contenedorPeliculas {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 34px;
+  gap: 38px;
 }
 
 #contenedorPeliculas article {
@@ -195,33 +196,40 @@ button {
 
 #contenedorPeliculas img {
   width: 100%;
-  height: 390px;
+  aspect-ratio: 2 / 3;
+  height: auto;
   object-fit: cover;
   display: block;
+  background-color: #111;
   filter: grayscale(10%);
   transition: transform 0.4s ease, filter 0.4s ease;
 }
 
 #contenedorPeliculas article:hover img {
-  transform: scale(1.03);
+  transform: scale(1.02);
   filter: grayscale(0%);
 }
 
 #contenedorPeliculas h3 {
-  font-size: 28px;
+  font-size: 30px;
+  line-height: 1;
   letter-spacing: -1px;
   margin-top: 18px;
 }
 
 #contenedorPeliculas p {
-  margin-top: 8px;
-  color: #777;
+  margin-top: 10px;
+  color: #6f6f6f;
   text-transform: uppercase;
   font-size: 13px;
 }
 
 #contenedorPeliculas button {
-  margin-top: 15px;
+  margin-top: 18px;
+  background-color: #050505;
+  color: white;
+  border: none;
+  padding: 13px 16px;
 }
 
 /* SECCIONES INTERNAS */
