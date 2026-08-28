@@ -1,0 +1,24 @@
+{
+  "name": "vanta-cinema",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "server": "json-server db.json"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andresfeliperocharodriguez13-coder/VANTA-CINEMA.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/andresfeliperocharodriguez13-coder/VANTA-CINEMA/issues"
+  },
+  "homepage": "https://github.com/andresfeliperocharodriguez13-coder/VANTA-CINEMA#readme",
+  "dependencies": {
+    "json-server": "^1.0.0-beta.15"
+  }
+}

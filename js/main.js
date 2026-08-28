@@ -1,3 +1,4 @@
+
 document.addEventListener("DOMContentLoaded", function () {
   const btnAbrirMenu = document.getElementById("btnAbrirMenu");
   const btnCerrarMenu = document.getElementById("btnCerrarMenu");
