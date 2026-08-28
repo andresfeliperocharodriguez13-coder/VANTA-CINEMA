@@ -1,0 +1,131 @@
+{
+  "functions": [
+     {
+    "id": 1,
+    "movieId": 550,
+    "roomId": 1,
+    "date": "2026-08-28",
+    "time": "18:00",
+    "format": "2D",
+    "price": 15000
+  },
+  {
+    "id": 2,
+    "movieId": 550,
+    "roomId": 2,
+    "date": "2026-08-28",
+    "time": "20:30",
+    "format": "2D",
+    "price": 18000
+  },
+  {
+    "id": 3,
+    "movieId": 550,
+    "roomId": 3,
+    "date": "2026-08-29",
+    "time": "19:00",
+    "format": "3D",
+    "price": 22000
+  }
+  ],
+  "rooms": [
+  {
+    "id": 1,
+    "name": "Sala 1",
+    "capacity": 50,
+    "type": "2D"
+  },
+  {
+    "id": 2,
+    "name": "Sala 2",
+    "capacity": 40,
+    "type": "2D"
+  },
+  {
+    "id": 3,
+    "name": "Sala 3",
+    "capacity": 60,
+    "type": "3D"
+  }
+
+  ],
+  "seats": [
+      {
+    "id": 1,
+    "roomId": 1,
+    "row": "A",
+    "number": 1
+  },
+  {
+    "id": 2,
+    "roomId": 1,
+    "row": "A",
+    "number": 2
+  },
+  {
+    "id": 3,
+    "roomId": 1,
+    "row": "A",
+    "number": 3
+  },
+  {
+    "id": 4,
+    "roomId": 1,
+    "row": "A",
+    "number": 4
+  },
+  {
+    "id": 5,
+    "roomId": 1,
+    "row": "A",
+    "number": 5
+  },
+  {
+    "id": 6,
+    "roomId": 1,
+    "row": "A",
+    "number": 6
+  }
+  ],
+  "functionSeats": [
+      {
+    "id": 1,
+    "functionId": 1,
+    "seatId": 1,
+    "status": "available"
+  },
+  {
+    "id": 2,
+    "functionId": 1,
+    "seatId": 2,
+    "status": "available"
+  },
+  {
+    "id": 3,
+    "functionId": 1,
+    "seatId": 3,
+    "status": "available"
+  },
+  {
+    "id": 4,
+    "functionId": 1,
+    "seatId": 4,
+    "status": "available"
+  },
+  {
+    "id": 5,
+    "functionId": 1,
+    "seatId": 5,
+    "status": "occupied"
+  },
+  {
+    "id": 6,
+    "functionId": 1,
+    "seatId": 6,
+    "status": "available"
+  }
+  ],
+  "reservations": [],
+  "purchases": [],
+  "ratings": []
+}
