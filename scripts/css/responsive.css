@@ -1,4 +1,0 @@
-@media (max-width: 640px) {
-  .reserva-resumen { grid-template-columns: 1fr; }
-  .reserva-resumen .btn-primary, .compra-card .btn-primary { width: 100%; }
-}

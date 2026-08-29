@@ -999,27 +999,6 @@
       ],
       "totalPagar": 30000,
       "id": "8a770d2a-3fa9-4119-a3a6-19ce6ad279e3"
-    },
-    {
-      "idReserva": "VT-665697",
-      "fechaReserva": "2026-08-29T09:03:40.795Z",
-      "comprador": {
-        "nombre": "AHJSDHASJHDAJ",
-        "email": "andresfeliperocharodriguez13@gmail.com",
-        "documento": "1j2j1h3j21h3j1"
-      },
-      "pelicula": "Spider-Man: Brand New Day",
-      "fecha": "2026-08-29",
-      "horario": "14:00",
-      "formato": "2D",
-      "functionId": "969681-2026-08-29-1-14:00",
-      "roomId": 1,
-      "asientos": [
-        "A4",
-        "A5"
-      ],
-      "totalPagar": 30000,
-      "id": "41082c1c-c3b4-47d6-ad48-d7ec714d9393"
     }
   ],
   "ratings": []
