@@ -1,209 +1,649 @@
 document.addEventListener('DOMContentLoaded', async () => {
-  const parametrosURL = new URLSearchParams(window.location.search);
-  const movieId = parametrosURL.get('id');
 
-  const loading = document.getElementById('loading');
-  const contenidoFunciones = document.getElementById('contenidoFunciones');
-  const btnVolverDetalle = document.getElementById('btnVolverDetalle');
-  const btnContinuarAsientos = document.getElementById('btnContinuarAsientos');
-  const resumenSeleccion = document.getElementById('resumenSeleccion');
+    const parametrosURL = new URLSearchParams(window.location.search);
+    const movieId = parametrosURL.get('id');
 
-  const baseUrlReal = (typeof BASE_URL !== 'undefined') ? BASE_URL : 'https://api.themoviedb.org/3';
-  const apiKeyReal = (typeof API_KEY !== 'undefined') ? API_KEY : '';
-  const imgBaseReal = (typeof IMAGE_BASE_URL !== 'undefined') ? IMAGE_BASE_URL : 'https://image.tmdb.org/t/p/w500';
+    const loading = document.getElementById('loading');
+    const contenidoFunciones = document.getElementById('contenidoFunciones');
+    const btnVolverDetalle = document.getElementById('btnVolverDetalle');
+    const btnContinuarAsientos = document.getElementById('btnContinuarAsientos');
+    const resumenSeleccion = document.getElementById('resumenSeleccion');
 
-  let funcionSeleccionada = {
-    movieId: movieId,
-    peliculaTitulo: '',
-    fecha: null,
-    formato: null,
-    horario: null,
-    precioUnitario: 0
-  };
+    const baseUrlReal =
+        typeof BASE_URL !== 'undefined'
+            ? BASE_URL
+            : 'https://api.themoviedb.org/3';
 
-  if (!movieId) {
-    if (loading) loading.textContent = '⚠️ No se especificó ninguna película. Regresa a la cartelera.';
-    return;
-  }
+    const apiKeyReal =
+        typeof API_KEY !== 'undefined'
+            ? API_KEY
+            : '';
 
-  // Configurar enlace de regresar al detalle
-  if (btnVolverDetalle) {
-    btnVolverDetalle.href = `detalle.html?id=${movieId}`;
-  }
+    const imgBaseReal =
+        typeof IMAGE_BASE_URL !== 'undefined'
+            ? IMAGE_BASE_URL
+            : 'https://image.tmdb.org/t/p/w500';
 
-  try {
-    // 1. Obtener datos de la película desde TMDB
-    const resPeli = await fetch(`${baseUrlReal}/movie/${movieId}?api_key=${apiKeyReal}&language=es-ES`);
-    if (!resPeli.ok) throw new Error('No se pudo cargar la información de la película.');
-    const pelicula = await resPeli.json();
+    let funcionSeleccionada = {
+        movieId: movieId,
+        peliculaTitulo: '',
+        functionId: null,
+        fecha: null,
+        formato: null,
+        horario: null,
+        precioUnitario: 0,
+        roomId: null
+    };
 
-    funcionSeleccionada.peliculaTitulo = pelicula.title;
-
-    // Llenar Ficha Resumen
-    document.getElementById('tituloPeli').textContent = pelicula.title;
-    document.getElementById('duracionPeli').textContent = pelicula.runtime || 'N/A';
-    document.getElementById('promedioPeli').textContent = pelicula.vote_average ? pelicula.vote_average.toFixed(1) : 'N/A';
-    
-    if (pelicula.genres && pelicula.genres.length > 0) {
-      document.getElementById('generosPeli').textContent = pelicula.genres.map(g => g.name).join(' • ');
+    // Verificar que exista el ID de la película
+    if (!movieId) {
+        if (loading) {
+            loading.textContent =
+                '⚠️ No se especificó ninguna película.';
+        }
+        return;
     }
 
-    if (pelicula.poster_path) {
-      document.getElementById('posterPeli').src = `${imgBaseReal}${pelicula.poster_path}`;
+    // Botón volver
+    if (btnVolverDetalle) {
+        btnVolverDetalle.href = `detalle.html?id=${movieId}`;
     }
 
-    // 2. Generar Fechas Disponibles (Próximos 5 días)
-    generarFechas();
+    try {
 
-    // 3. Generar Formatos y Horarios
-    generarFormatosYHorarios();
+        // ==========================================
+        // 1. OBTENER PELÍCULA DESDE TMDB
+        // ==========================================
 
-    // Mostrar Contenido
-    if (loading) loading.classList.add('hidden');
-    if (contenidoFunciones) contenidoFunciones.classList.remove('hidden');
+        const resPeli = await fetch(
+            `${baseUrlReal}/movie/${movieId}?api_key=${apiKeyReal}&language=es-ES`
+        );
 
-  } catch (error) {
-    console.error('Error:', error);
-    if (loading) loading.textContent = `⚠️ ${error.message}`;
-  }
+        if (!resPeli.ok) {
+            throw new Error(
+                'No se pudo cargar la información de la película.'
+            );
+        }
 
-  // --- FUNCIÓN: Generar tarjetas de fecha ---
-  function generarFechas() {
-    const contenedorFechas = document.getElementById('contenedorFechas');
-    if (!contenedorFechas) return;
+        const pelicula = await resPeli.json();
 
-    const diasSemana = ['DOM', 'LUN', 'MAR', 'MIÉ', 'JUE', 'VIE', 'SÁB'];
-    const meses = ['ENE', 'FEB', 'MAR', 'ABR', 'MAY', 'JUN', 'JUL', 'AGO', 'SEP', 'OCT', 'NOV', 'DIC'];
+        funcionSeleccionada.peliculaTitulo = pelicula.title;
 
-    const hoy = new Date();
-    let HTMLFechas = '';
+        // Mostrar información
+        const tituloPeli = document.getElementById('tituloPeli');
+        const duracionPeli = document.getElementById('duracionPeli');
+        const promedioPeli = document.getElementById('promedioPeli');
+        const generosPeli = document.getElementById('generosPeli');
+        const posterPeli = document.getElementById('posterPeli');
 
-    for (let i = 0; i < 5; i++) {
-      const fechaObj = new Date();
-      fechaObj.setDate(hoy.getDate() + i);
+        if (tituloPeli) {
+            tituloPeli.textContent = pelicula.title;
+        }
 
-      const diaSem = diasSemana[fechaObj.getDay()];
-      const numDia = fechaObj.getDate();
-      const mesNom = meses[fechaObj.getMonth()];
-      const fechaTexto = `${diaSem} ${numDia} ${mesNom}`;
-      
-      const esActivo = i === 0 ? 'active' : '';
-      if (i === 0) funcionSeleccionada.fecha = fechaTexto;
+        if (duracionPeli) {
+            duracionPeli.textContent =
+                pelicula.runtime
+                    ? `${pelicula.runtime} min`
+                    : 'N/A';
+        }
 
-      HTMLFechas += `
-        <div class="card-fecha ${esActivo}" data-fecha="${fechaTexto}">
-          <span class="dia-semana">${i === 0 ? 'HOY' : diaSem}</span>
-          <span class="num-dia">${numDia}</span>
-          <span class="mes">${mesNom}</span>
-        </div>
-      `;
+        if (promedioPeli) {
+            promedioPeli.textContent =
+                pelicula.vote_average
+                    ? pelicula.vote_average.toFixed(1)
+                    : 'N/A';
+        }
+
+        if (generosPeli && pelicula.genres) {
+            generosPeli.textContent =
+                pelicula.genres.map(g => g.name).join(' • ');
+        }
+
+        if (posterPeli && pelicula.poster_path) {
+            posterPeli.src =
+                `${imgBaseReal}${pelicula.poster_path}`;
+        }
+
+        // ==========================================
+        // 2. GENERAR LOS 5 DÍAS
+        // ==========================================
+
+        generarFechas();
+
+        // ==========================================
+        // 3. GENERAR FUNCIONES PARA ESTA PELÍCULA
+        // ==========================================
+
+        await generarFunciones();
+
+        // Mostrar contenido
+        if (loading) {
+            loading.classList.add('hidden');
+        }
+
+        if (contenidoFunciones) {
+            contenidoFunciones.classList.remove('hidden');
+        }
+
+    } catch (error) {
+
+        console.error('Error:', error);
+
+        if (loading) {
+            loading.textContent =
+                `⚠️ ${error.message}`;
+        }
     }
 
-    contenedorFechas.innerHTML = HTMLFechas;
 
-    // Escuchar clicks en tarjetas de fecha
-    const tarjetas = contenedorFechas.querySelectorAll('.card-fecha');
-    tarjetas.forEach(card => {
-      card.addEventListener('click', () => {
-        tarjetas.forEach(c => c.classList.remove('active'));
-        card.classList.add('active');
-        funcionSeleccionada.fecha = card.getAttribute('data-fecha');
-        actualizarEstadoBoton();
-      });
-    });
-  }
+    // ==========================================
+    // GENERAR LOS 5 DÍAS
+    // ==========================================
 
-  // --- FUNCIÓN: Generar bloques de formatos y horarios ---
-  function generarFormatosYHorarios() {
-    const contenedorHorarios = document.getElementById('contenedorHorarios');
-    if (!contenedorHorarios) return;
+    function generarFechas() {
 
-    const ofertas = [
-      {
-        nombre: 'SALA TRADICIONAL 2D (DOBLADA / SUB)',
-        precio: 14000,
-        precioFormateado: '$14.000 COP',
-        horarios: ['14:10', '16:40', '19:15', '21:50']
-      },
-      {
-        nombre: 'SALA 3D / DOLBY ATMOS',
-        precio: 18000,
-        precioFormateado: '$18.000 COP',
-        horarios: ['15:00', '18:20', '21:00']
-      },
-      {
-        nombre: 'SALA VIP / RECLINABLE',
-        precio: 25000,
-        precioFormateado: '$25.000 COP',
-        horarios: ['17:00', '20:30']
-      }
-    ];
+        const contenedorFechas =
+            document.getElementById('contenedorFechas');
 
-    contenedorHorarios.innerHTML = ofertas.map(f => `
-      <div class="formato-block">
-        <div class="formato-header">
-          <span class="formato-nombre">${f.nombre}</span>
-          <span class="formato-precio">${f.precioFormateado}</span>
-        </div>
-        <div class="horarios-grid">
-          ${f.horarios.map(h => `
-            <button 
-              class="btn-horario" 
-              data-formato="${f.nombre}" 
-              data-precio="${f.precio}" 
-              data-horario="${h}">
-              ${h}
-            </button>
-          `).join('')}
-        </div>
-      </div>
-    `).join('');
+        if (!contenedorFechas) return;
 
-    // Escuchar clicks en botones de horario
-    const botonesHorario = contenedorHorarios.querySelectorAll('.btn-horario');
-    botonesHorario.forEach(btn => {
-      btn.addEventListener('click', () => {
-        botonesHorario.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
+        const diasSemana = [
+            'DOM',
+            'LUN',
+            'MAR',
+            'MIÉ',
+            'JUE',
+            'VIE',
+            'SÁB'
+        ];
 
-        funcionSeleccionada.formato = btn.getAttribute('data-formato');
-        funcionSeleccionada.horario = btn.getAttribute('data-horario');
-        funcionSeleccionada.precioUnitario = parseInt(btn.getAttribute('data-precio'), 10);
+        const meses = [
+            'ENE',
+            'FEB',
+            'MAR',
+            'ABR',
+            'MAY',
+            'JUN',
+            'JUL',
+            'AGO',
+            'SEP',
+            'OCT',
+            'NOV',
+            'DIC'
+        ];
 
-        actualizarEstadoBoton();
-      });
-    });
-  }
+        const hoy = new Date();
 
-  // --- FUNCIÓN: Actualizar texto del resumen y habilitar botón ---
-  function actualizarEstadoBoton() {
-    if (funcionSeleccionada.fecha && funcionSeleccionada.horario) {
-      resumenSeleccion.textContent = `${funcionSeleccionada.fecha} — ${funcionSeleccionada.horario} (${funcionSeleccionada.formato})`;
-      btnContinuarAsientos.disabled = false;
-    } else {
-      resumenSeleccion.textContent = 'Ningún horario seleccionado';
-      btnContinuarAsientos.disabled = true;
+        let HTMLFechas = '';
+
+        for (let i = 0; i < 5; i++) {
+
+            const fechaObj = new Date();
+
+            fechaObj.setDate(
+                hoy.getDate() + i
+            );
+
+            const diaSem =
+                diasSemana[fechaObj.getDay()];
+
+            const numDia =
+                fechaObj.getDate();
+
+            const mesNom =
+                meses[fechaObj.getMonth()];
+
+            // Fecha real para trabajar
+            const fechaReal =
+                fechaObj.toISOString().split('T')[0];
+
+            const fechaTexto =
+                `${diaSem} ${numDia} ${mesNom}`;
+
+            const esActivo =
+                i === 0 ? 'active' : '';
+
+            if (i === 0) {
+                funcionSeleccionada.fecha =
+                    fechaReal;
+            }
+
+            HTMLFechas += `
+                <div
+                    class="card-fecha ${esActivo}"
+                    data-fecha="${fechaReal}"
+                >
+                    <span class="dia-semana">
+                        ${i === 0 ? 'HOY' : diaSem}
+                    </span>
+
+                    <span class="num-dia">
+                        ${numDia}
+                    </span>
+
+                    <span class="mes">
+                        ${mesNom}
+                    </span>
+                </div>
+            `;
+        }
+
+        contenedorFechas.innerHTML =
+            HTMLFechas;
+
+        const tarjetas =
+            contenedorFechas.querySelectorAll(
+                '.card-fecha'
+            );
+
+        tarjetas.forEach(card => {
+
+            card.addEventListener('click', async () => {
+
+                tarjetas.forEach(c =>
+                    c.classList.remove('active')
+                );
+
+                card.classList.add('active');
+
+                funcionSeleccionada.fecha =
+                    card.getAttribute('data-fecha');
+
+                funcionSeleccionada.functionId =
+                    null;
+
+                funcionSeleccionada.horario =
+                    null;
+
+                funcionSeleccionada.formato =
+                    null;
+
+                funcionSeleccionada.precioUnitario =
+                    0;
+
+                funcionSeleccionada.roomId =
+                    null;
+
+                await generarFunciones();
+
+                actualizarEstadoBoton();
+            });
+        });
     }
-  }
 
-  // NAVEGACIÓN A ASIENTOS
-  if (btnContinuarAsientos) {
-    btnContinuarAsientos.addEventListener('click', () => {
-      if (!funcionSeleccionada.horario) return;
 
-      // Guardar contexto en localStorage para el flujo completo
-      localStorage.setItem('vanta_funcion_seleccionada', JSON.stringify(funcionSeleccionada));
+    // ==========================================
+    // GENERAR FUNCIONES AUTOMÁTICAMENTE
+    // ==========================================
 
-      // Redirigir a la vista de asientos con query params
-      const params = new URLSearchParams({
-        id: funcionSeleccionada.movieId,
-        fecha: funcionSeleccionada.fecha,
-        horario: funcionSeleccionada.horario,
-        formato: funcionSeleccionada.formato,
-        precio: funcionSeleccionada.precioUnitario
-      });
+    async function generarFunciones() {
 
-      window.location.href = `asientos.html?${params.toString()}`;
-    });
-  }
+        const contenedorHorarios =
+            document.getElementById(
+                'contenedorHorarios'
+            );
+
+        if (!contenedorHorarios) return;
+
+        contenedorHorarios.innerHTML = `
+            <p class="mensaje-funciones">
+                Cargando funciones...
+            </p>
+        `;
+
+        // ==========================================
+        // CONFIGURACIÓN DE LAS SALAS
+        // ==========================================
+
+        const ofertas = [
+
+            {
+                roomId: 1,
+                nombre: 'SALA TRADICIONAL 2D',
+                formato: '2D',
+                precio: 15000,
+                horarios: [
+                    '14:00',
+                    '16:30',
+                    '18:00',
+                    '20:30'
+                ]
+            },
+
+            {
+                roomId: 2,
+                nombre: 'SALA TRADICIONAL 2D',
+                formato: '2D',
+                precio: 18000,
+                horarios: [
+                    '15:00',
+                    '17:30',
+                    '20:00',
+                    '22:00'
+                ]
+            },
+
+            {
+                roomId: 3,
+                nombre: 'SALA 3D',
+                formato: '3D',
+                precio: 22000,
+                horarios: [
+                    '16:00',
+                    '19:00',
+                    '21:30'
+                ]
+            }
+        ];
+
+
+        // ==========================================
+        // BUSCAR FUNCIONES EXISTENTES EN JSON-SERVER
+        // ==========================================
+
+        let funcionesDB = [];
+
+        try {
+
+            const respuesta =
+                await fetch(
+                    'http://localhost:3000/functions'
+                );
+
+            if (respuesta.ok) {
+                funcionesDB =
+                    await respuesta.json();
+            }
+
+        } catch (error) {
+
+            console.warn(
+                'No se pudieron cargar las funciones del servidor.'
+            );
+        }
+
+
+        // ==========================================
+        // CREAR FUNCIONES PARA LA PELÍCULA
+        // ==========================================
+
+        const funcionesGeneradas = [];
+
+        ofertas.forEach(oferta => {
+
+            oferta.horarios.forEach(horario => {
+
+                const funcionExistente =
+                    funcionesDB.find(funcion =>
+                        String(funcion.movieId) === String(movieId) &&
+                        funcion.date === funcionSeleccionada.fecha &&
+                        funcion.time === horario &&
+                        String(funcion.roomId) === String(oferta.roomId)
+                    );
+
+                if (funcionExistente) {
+
+                    funcionesGeneradas.push({
+                        ...funcionExistente,
+                        nombreSala: oferta.nombre,
+                        formato: oferta.formato,
+                        precio: funcionExistente.price
+                    });
+
+                } else {
+
+                    // ID temporal único
+                    const idTemporal =
+                        `${movieId}-${funcionSeleccionada.fecha}-${oferta.roomId}-${horario}`;
+
+                    funcionesGeneradas.push({
+
+                        id: idTemporal,
+
+                        movieId: Number(movieId),
+
+                        roomId: oferta.roomId,
+
+                        date: funcionSeleccionada.fecha,
+
+                        time: horario,
+
+                        format: oferta.formato,
+
+                        price: oferta.precio,
+
+                        nombreSala: oferta.nombre
+
+                    });
+                }
+            });
+        });
+
+
+        // ==========================================
+        // MOSTRAR FUNCIONES
+        // ==========================================
+
+        contenedorHorarios.innerHTML = '';
+
+        const funcionesPorSala = {};
+
+        funcionesGeneradas.forEach(funcion => {
+
+            if (!funcionesPorSala[funcion.roomId]) {
+                funcionesPorSala[funcion.roomId] = [];
+            }
+
+            funcionesPorSala[funcion.roomId].push(
+                funcion
+            );
+        });
+
+
+        Object.values(funcionesPorSala).forEach(
+            funciones => {
+
+                if (funciones.length === 0) return;
+
+                const primera =
+                    funciones[0];
+
+                const bloque =
+                    document.createElement('div');
+
+                bloque.className =
+                    'formato-block';
+
+                bloque.innerHTML = `
+
+                    <div class="formato-header">
+
+                        <span class="formato-nombre">
+                            ${primera.nombreSala}
+                        </span>
+
+                        <span class="formato-precio">
+                            ${primera.format}
+                            ·
+                            $${primera.price.toLocaleString('es-CO')}
+                        </span>
+
+                    </div>
+
+                    <div class="horarios-grid">
+
+                        ${funciones.map(funcion => `
+
+                            <button
+                                class="btn-horario"
+
+                                data-function-id="${funcion.id}"
+
+                                data-room-id="${funcion.roomId}"
+
+                                data-formato="${funcion.format}"
+
+                                data-precio="${funcion.price}"
+
+                                data-horario="${funcion.time}"
+                            >
+
+                                ${funcion.time}
+
+                            </button>
+
+                        `).join('')}
+
+                    </div>
+                `;
+
+                contenedorHorarios.appendChild(
+                    bloque
+                );
+            }
+        );
+
+
+        // ==========================================
+        // EVENTOS DE LOS HORARIOS
+        // ==========================================
+
+        const botonesHorario =
+            contenedorHorarios.querySelectorAll(
+                '.btn-horario'
+            );
+
+        botonesHorario.forEach(btn => {
+
+            btn.addEventListener('click', () => {
+
+                botonesHorario.forEach(b =>
+                    b.classList.remove('active')
+                );
+
+                btn.classList.add('active');
+
+                funcionSeleccionada.functionId =
+                    btn.getAttribute(
+                        'data-function-id'
+                    );
+
+                funcionSeleccionada.roomId =
+                    Number(
+                        btn.getAttribute(
+                            'data-room-id'
+                        )
+                    );
+
+                funcionSeleccionada.formato =
+                    btn.getAttribute(
+                        'data-formato'
+                    );
+
+                funcionSeleccionada.horario =
+                    btn.getAttribute(
+                        'data-horario'
+                    );
+
+                funcionSeleccionada.precioUnitario =
+                    Number(
+                        btn.getAttribute(
+                            'data-precio'
+                        )
+                    );
+
+                actualizarEstadoBoton();
+            });
+        });
+    }
+
+
+    // ==========================================
+    // ACTUALIZAR RESUMEN
+    // ==========================================
+
+    function actualizarEstadoBoton() {
+
+        if (
+            funcionSeleccionada.fecha &&
+            funcionSeleccionada.horario
+        ) {
+
+            resumenSeleccion.textContent =
+                `${funcionSeleccionada.fecha} — ` +
+                `${funcionSeleccionada.horario} ` +
+                `(${funcionSeleccionada.formato})`;
+
+            btnContinuarAsientos.disabled =
+                false;
+
+        } else {
+
+            resumenSeleccion.textContent =
+                'Ningún horario seleccionado';
+
+            btnContinuarAsientos.disabled =
+                true;
+        }
+    }
+
+
+    // ==========================================
+    // IR A ASIENTOS
+    // ==========================================
+
+    if (btnContinuarAsientos) {
+
+        btnContinuarAsientos.addEventListener(
+            'click',
+            () => {
+
+                if (
+                    !funcionSeleccionada.horario
+                ) {
+                    return;
+                }
+
+                // Guardar información
+                localStorage.setItem(
+                    'vanta_funcion_seleccionada',
+                    JSON.stringify(
+                        funcionSeleccionada
+                    )
+                );
+
+
+                // Enviar información a asientos
+                const params =
+                    new URLSearchParams({
+
+                        id:
+                            funcionSeleccionada.movieId,
+
+                        functionId:
+                            funcionSeleccionada.functionId,
+
+                        fecha:
+                            funcionSeleccionada.fecha,
+
+                        horario:
+                            funcionSeleccionada.horario,
+
+                        formato:
+                            funcionSeleccionada.formato,
+
+                        precio:
+                            funcionSeleccionada.precioUnitario,
+
+                        roomId:
+                            funcionSeleccionada.roomId
+                    });
+
+
+                window.location.href =
+                    `asientos.html?${params.toString()}`;
+            }
+        );
+    }
+
 });
