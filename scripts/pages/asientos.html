@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VANTA CINEMA - Selección de Asientos</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/asientos.css">
+</head>
+<body>
+
+  <!-- Encabezado -->
+  <header class="header-asientos">
+    <a id="btnVolverFunciones" href="#" class="btn-volver">← CAMBIAR FUNCIÓN</a>
+    <div class="logo">VANTA <span>CINEMA</span></div>
+  </header>
+
+  <!-- Contenido Principal -->
+  <main class="contenedor-asientos">
+    
+    <!-- Resumen Superior de la Función -->
+    <div class="resumen-funcion-bar">
+      <div>
+        <h2 id="peliculaTitulo">Cargando película...</h2>
+        <p id="funcionDetalle" class="subtexto-funcion">-- | -- | --</p>
+      </div>
+      <div class="precio-badge">
+        <span class="label-precio">PRECIO / BOLETO</span>
+        <strong id="precioUnitarioTexto">$0 COP</strong>
+      </div>
+    </div>
+
+    <!-- Leyenda de Estados de Asientos -->
+    <div class="leyenda-asientos">
+      <div class="item-leyenda">
+        <span class="muestra libre"></span>
+        <span>Disponible</span>
+      </div>
+      <div class="item-leyenda">
+        <span class="muestra seleccionado"></span>
+        <span>Seleccionado</span>
+      </div>
+      <div class="item-leyenda">
+        <span class="muestra ocupado"></span>
+        <span>Ocupado</span>
+      </div>
+    </div>
+
+    <!-- Escenario de la Sala -->
+    <div class="sala-container">
+      
+      <!-- Representación visual de la pantalla -->
+      <div class="pantalla-wrapper">
+        <div class="pantalla-curva"></div>
+        <span class="pantalla-texto">PANTALLA</span>
+      </div>
+
+      <!-- Grilla interactiva de asientos -->
+      <div id="gridAsientos" class="grid-asientos">
+        <!-- Filas y sillas generadas dinámicamente con JS -->
+      </div>
+    </div>
+
+    <!-- Barra Inferior de Total y Confirmación -->
+    <div class="barra-pago">
+      <div class="detalles-compra">
+        <div class="bloque-info">
+          <span class="label">ASIENTOS:</span>
+          <p id="asientosSeleccionadosTexto" class="valor-asientos">Ninguno</p>
+        </div>
+        <div class="bloque-info">
+          <span class="label">TOTAL A PAGAR:</span>
+          <p id="totalPagarTexto" class="valor-total">$0 COP</p>
+        </div>
+      </div>
+      
+      <button id="btnContinuarPago" class="btn-continuar" disabled>
+        IR AL PAGO Y REGISTRO →
+      </button>
+    </div>
+
+  </main>
+
+  <script src="../js/config.js"></script>
+  <script src="../js/asientos.js"></script>
+</body>
+</html>

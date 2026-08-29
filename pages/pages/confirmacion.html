@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VANTA CINEMA - Confirmación y Boleto</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/confirmacion.css">
+</head>
+<body>
+
+  <!-- Header Estilo A24 -->
+  <header class="header-a24">
+    <a id="btnVolverAsientos" href="asientos.html" class="btn-volver">← ASIENTOS</a>
+    <div class="logo-a24">VANTA <span>STUDIOS</span></div>
+  </header>
+
+  <main class="contenedor-confirmacion">
+
+    <!-- SECCIÓN 1: Formulario de Registro y Pago -->
+    <div id="seccionFormulario" class="bloque-checkout">
+      
+      <!-- Ficha de Resumen -->
+      <section class="card-resumen-reserva">
+        <span class="tag-categoria">DETALLES DE LA RESERVA</span>
+        <h1 id="resumenTitulo">Cargando película...</h1>
+        
+        <div class="grid-detalles-reserva">
+          <div class="item-detalle">
+            <span class="label">FECHA Y HORA</span>
+            <p id="resumenFechaHora">--</p>
+          </div>
+          <div class="item-detalle">
+            <span class="label">FORMATO / SALA</span>
+            <p id="resumenFormato">--</p>
+          </div>
+          <div class="item-detalle">
+            <span class="label">ASIENTOS</span>
+            <p id="resumenAsientos">--</p>
+          </div>
+          <div class="item-detalle">
+            <span class="label">TOTAL</span>
+            <p id="resumenTotal" class="monto-destacado">$0 COP</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Formulario del Comprador -->
+      <section class="card-formulario">
+        <h2 class="titulo-seccion">INFORMACIÓN DEL COMPRADOR</h2>
+        
+        <form id="formCheckout" class="form-grid">
+          <div class="campo-grupo">
+            <label for="nombreComprador">NOMBRE COMPLETO</label>
+            <input type="text" id="nombreComprador" placeholder="Ej. Sofia Gomez" required>
+          </div>
+
+          <div class="campo-grupo">
+            <label for="emailComprador">CORREO ELECTRÓNICO</label>
+            <input type="email" id="emailComprador" placeholder="ejemplo@correo.com" required>
+          </div>
+
+          <div class="campo-grupo">
+            <label for="documentoComprador">DOCUMENTO / CÉDULA</label>
+            <input type="text" id="documentoComprador" placeholder="1098765432" required>
+          </div>
+
+          <div class="campo-grupo">
+            <label for="metodoPago">MÉTODO DE PAGO</label>
+            <select id="metodoPago" required>
+              <option value="Tarjeta de Crédito / Débito">Tarjeta de Crédito / Débito</option>
+              <option value="Nequi / Daviplata">Nequi / Daviplata</option>
+              <option value="PSE / Transferencia">PSE / Transferencia Bancaria</option>
+            </select>
+          </div>
+
+          <button type="submit" class="btn-confirmar-pago">
+            CONFIRMAR COMPRA Y GENERAR BOLETO
+          </button>
+        </form>
+      </section>
+
+    </div>
+
+    <!-- SECCIÓN 2: Boleto Digital (Se muestra tras confirmar) -->
+    <div id="seccionBoleto" class="bloque-ticket hidden">
+      <div class="mensaje-exito">
+        <span>✓ COMPRA PROCESADA CON ÉXITO</span>
+        <h2>TU BOLETO DIGITAL ESTÁ LISTO</h2>
+      </div>
+
+      <!-- Ticket con estética A24 -->
+      <div class="ticket-a24">
+        <div class="ticket-header">
+          <span class="marca">VANTA CINEMA</span>
+          <span id="ticketCodigo" class="codigo-reserva">#VT-000000</span>
+        </div>
+
+        <div class="ticket-cuerpo">
+          <h2 id="ticketTitulo">--</h2>
+          
+          <div class="ticket-meta">
+            <div>
+              <span class="lbl">FECHA</span>
+              <strong id="ticketFecha">--</strong>
+            </div>
+            <div>
+              <span class="lbl">HORA</span>
+              <strong id="ticketHora">--</strong>
+            </div>
+            <div>
+              <span class="lbl">SALA</span>
+              <strong id="ticketFormato">--</strong>
+            </div>
+            <div>
+              <span class="lbl">ASIENTOS</span>
+              <strong id="ticketAsientos">--</strong>
+            </div>
+          </div>
+
+          <div class="ticket-comprador">
+            <span class="lbl">TITULAR DE LA RESERVA</span>
+            <p id="ticketNombre">--</p>
+          </div>
+        </div>
+
+        <div class="corte-ticket">
+          <div class="circulo-corte izq"></div>
+          <div class="linea-punteada"></div>
+          <div class="circulo-corte der"></div>
+        </div>
+
+        <div class="ticket-footer">
+          <div class="qr-wrapper">
+            <img id="ticketQR" src="" alt="Código QR del boleto">
+          </div>
+          <p class="instruccion-qr">Presenta este código QR en la entrada de la sala.</p>
+        </div>
+      </div>
+
+      <div class="acciones-post-compra">
+        <button id="btnImprimir" class="btn-secundario" onclick="window.print()">IMPRIMIR / GUARDAR EN PDF</button>
+        <a href="../index.html" class="btn-primario">VOLVER A LA CARTELERA</a>
+      </div>
+    </div>
+
+  </main>
+
+  <script src="../js/config.js"></script>
+  <script src="../js/confirmacion.js"></script>
+</body>
+</html>

@@ -1,0 +1,250 @@
+/* ==========================================================================
+   VANTA CINEMA - PERFIL (ESTÉTICA A24)
+   ========================================================================== */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #080808;
+  color: #f5f5f7;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  min-height: 100vh;
+  padding-bottom: 80px;
+}
+
+/* Header Navbar */
+.header-a24 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 48px;
+  background-color: #080808;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.logo-a24 {
+  font-size: 1.1rem;
+  font-weight: 800;
+  letter-spacing: 4px;
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.logo-a24 span {
+  font-weight: 300;
+  color: #888888;
+}
+
+.nav-a24 {
+  display: flex;
+  gap: 28px;
+}
+
+.nav-link {
+  color: #888888;
+  text-decoration: none;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  transition: color 0.2s ease;
+}
+
+.nav-link:hover, .nav-link.active {
+  color: #ffffff;
+}
+
+/* Contenedor Principal */
+.contenedor-perfil {
+  max-width: 960px;
+  margin: 40px auto;
+  padding: 0 24px;
+}
+
+.encabezado-perfil {
+  margin-bottom: 40px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding-bottom: 24px;
+}
+
+.tag-sub {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  color: #888888;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.titulo-perfil {
+  font-size: 2.2rem;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  color: #ffffff;
+}
+
+.desc-perfil {
+  color: #888888;
+  font-size: 0.9rem;
+  margin-top: 6px;
+}
+
+/* Layout Grid */
+.grid-perfil {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  margin-bottom: 40px;
+}
+
+.card-perfil {
+  background-color: #0f0f0f;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 28px;
+  border-radius: 4px;
+}
+
+.subtitulo-seccion {
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+  color: #ffffff;
+  margin-bottom: 24px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  padding-bottom: 10px;
+}
+
+/* Formulario */
+.form-perfil {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.campo-perfil {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.campo-perfil label {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: #888888;
+}
+
+.campo-perfil input {
+  background-color: #141414;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 2px;
+  padding: 12px 14px;
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 0.85rem;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.campo-perfil input:focus {
+  border-color: #ffffff;
+}
+
+.btn-guardar {
+  background-color: #ffffff;
+  color: #000000;
+  border: none;
+  padding: 14px;
+  font-family: inherit;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background-color 0.2s ease;
+}
+
+.btn-guardar:hover {
+  background-color: #d1d1d1;
+}
+
+/* Menú de Accesos */
+.lista-accesos {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.item-acceso {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  background-color: #141414;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  text-decoration: none;
+  border-radius: 2px;
+  transition: all 0.2s ease;
+}
+
+.item-acceso:hover {
+  border-color: rgba(255, 255, 255, 0.25);
+  background-color: #181818;
+}
+
+.info-acceso {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.titulo-acceso {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.sub-acceso {
+  font-size: 0.7rem;
+  color: #777777;
+}
+
+.flecha {
+  color: #888888;
+  font-size: 0.9rem;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.item-acceso:hover .flecha {
+  color: #ffffff;
+  transform: translateX(4px);
+}
+
+/* Historial Reciente */
+.seccion-historial {
+  background-color: #0f0f0f;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 28px;
+  border-radius: 4px;
+}
+
+.historial-vacio {
+  text-align: center;
+  padding: 30px 0;
+  color: #666666;
+  font-size: 0.85rem;
+}
+
+@media (max-width: 768px) {
+  .grid-perfil {
+    grid-template-columns: 1fr;
+  }
+  .header-a24 {
+    padding: 18px 20px;
+    flex-direction: column;
+    gap: 15px;
+  }
+}
