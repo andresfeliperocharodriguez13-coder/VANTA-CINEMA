@@ -999,6 +999,56 @@
       ],
       "totalPagar": 30000,
       "id": "8a770d2a-3fa9-4119-a3a6-19ce6ad279e3"
+    },
+    {
+      "idReserva": "VT-582364",
+      "fechaReserva": "2026-08-29T21:22:56.467Z",
+      "comprador": {
+        "nombre": "AHJSDHASJHDAJ",
+        "email": "andresfeliperocharodriguez13@gmail.com",
+        "documento": "1j2j1h3j21h3j1"
+      },
+      "pelicula": "La Odisea",
+      "fecha": "2026-08-29",
+      "horario": "14:00",
+      "formato": "2D",
+      "functionId": "1368337-2026-08-29-1-14:00",
+      "roomId": 1,
+      "asientos": [
+        "A1",
+        "A2"
+      ],
+      "totalPagar": 30000,
+      "id": "3c5f57d2-4df6-4e6a-b276-aaa1d9b22001"
+    },
+    {
+      "idReserva": "VT-281043",
+      "fechaReserva": "2026-08-29T21:24:38.504Z",
+      "comprador": {
+        "nombre": "Andres Felipe Rocha Rodriguez",
+        "email": "andresfeliperocharodriguez13@gmail.com",
+        "documento": "1097913580"
+      },
+      "pelicula": "Spider-Man: Brand New Day",
+      "fecha": "2026-08-30",
+      "horario": "14:00",
+      "formato": "2D",
+      "functionId": "969681-2026-08-30-1-14:00",
+      "roomId": 1,
+      "asientos": [
+        "D1",
+        "D2",
+        "D3",
+        "D4",
+        "D5",
+        "E1",
+        "E2",
+        "E3",
+        "E4",
+        "E5"
+      ],
+      "totalPagar": 150000,
+      "id": "7f41a4c5-85e9-4043-b7eb-bd771036e028"
     }
   ],
   "ratings": []
