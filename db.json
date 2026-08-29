@@ -1049,6 +1049,50 @@
       ],
       "totalPagar": 150000,
       "id": "7f41a4c5-85e9-4043-b7eb-bd771036e028"
+    },
+    {
+      "idReserva": "VT-493689",
+      "fechaReserva": "2026-08-29T22:55:51.626Z",
+      "comprador": {
+        "nombre": "AHJSDHASJHDAJ",
+        "email": "andresfeliperocharodriguez13@gmail.com",
+        "documento": "1j2j1h3j21h3j1"
+      },
+      "pelicula": "El motín",
+      "fecha": "2026-08-29",
+      "horario": "14:00",
+      "formato": "2D",
+      "functionId": "1288445-2026-08-29-1-14:00",
+      "roomId": 1,
+      "asientos": [
+        "A1",
+        "A2",
+        "B1",
+        "B2"
+      ],
+      "totalPagar": 60000,
+      "id": "bf4bfe3f-71e2-4e70-a5dd-a80cb3f7f612"
+    },
+    {
+      "idReserva": "VT-840843",
+      "fechaReserva": "2026-08-29T23:00:37.020Z",
+      "comprador": {
+        "nombre": "xx",
+        "email": "andresfeliperocharodriguez13@gmail.com",
+        "documento": "xx"
+      },
+      "pelicula": "xXx: Reactivated",
+      "fecha": "2026-08-29",
+      "horario": "14:00",
+      "formato": "2D",
+      "functionId": "47971-2026-08-29-1-14:00",
+      "roomId": 1,
+      "asientos": [
+        "A1",
+        "A2"
+      ],
+      "totalPagar": 30000,
+      "id": "9b4ee49b-9a25-4c9a-99a5-d43f287f404b"
     }
   ],
   "ratings": []

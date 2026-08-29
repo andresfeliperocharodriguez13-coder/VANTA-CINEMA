@@ -1,9 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-
-    // ==============================
-    // 1. OBTENER DATOS DE LA FUNCIÓN
-    // ==============================
-
     const parametrosURL = new URLSearchParams(window.location.search);
 
     const funcionGuardada = leerAlmacenamientoJSON(
